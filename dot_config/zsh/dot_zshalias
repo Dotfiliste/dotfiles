@@ -7,15 +7,5 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 
-
-# Neovim FTW
-alias vim="nvim"
-
-# Kitty
-alias ssh="TERM=xterm-256color ssh" # Prevent glitches with Kitty over SSH
-alias icat="kitten icat"
-alias kdiff="kitten diff"
-alias ktransfer="kitten transfer"
-alias kssh="kitten ssh"
-alias kcb="kitty +kitten clipboard"
-alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+alias vim="nvim" # Neovim FTW
+alias ssh="TERM=xterm-256color ssh" # Prevent glitches with Ghostty over SSH
