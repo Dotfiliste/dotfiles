@@ -3,6 +3,3 @@ export ZDOTDIR=${ZDOTDIR:=${XDG_CONFIG_HOME}/zsh}
 
 export CLICOLOR=1
 export EDITOR=nvim
-
-# Easy access to my dotfiles
-export dotfiles="$HOME/Git/dotfiles"
