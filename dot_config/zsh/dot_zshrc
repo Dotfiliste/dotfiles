@@ -90,4 +90,4 @@ bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
 # Keychain
-eval $(keychain --eval --quiet --noinherit)
+eval $(keychain --eval --quiet)
