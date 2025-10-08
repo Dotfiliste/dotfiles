@@ -1,0 +1,16 @@
+{{- if eq .chezmoi.osRelease.id "cachyos" -}}
+#!/bin/bash
+
+sudo pacman -S --needed - <<EOF
+chezmoi
+keychain
+neofetch
+neovim
+nmap
+tree
+tealdeer
+brave-bin
+ghostty
+librewolf-bin
+EOF
+{{ end -}}
