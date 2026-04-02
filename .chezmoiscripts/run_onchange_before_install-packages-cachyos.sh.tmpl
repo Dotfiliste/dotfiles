@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.osRelease.id "cachyos" -}}
+{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "cachyos")) -}} 
 #!/bin/bash
 
 sudo pacman -S --needed - <<EOF
@@ -9,7 +9,6 @@ neovim
 nmap
 tree
 tealdeer
-brave-bin
 ghostty
 librewolf-bin
 EOF
