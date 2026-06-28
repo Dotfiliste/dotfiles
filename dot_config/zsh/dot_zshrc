@@ -3,6 +3,7 @@
 source "$ZDOTDIR/.zshalias"
 
 export PATH="$HOME/.local/bin:$PATH"
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
 # History
 
