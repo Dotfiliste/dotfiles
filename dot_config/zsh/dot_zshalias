@@ -9,3 +9,4 @@ alias diff='diff --color=auto'
 
 alias vim="nvim" # Neovim FTW
 alias ssh="TERM=xterm-256color ssh" # Prevent glitches with Ghostty over SSH
+alias k=kubectl
