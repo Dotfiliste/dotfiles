@@ -58,10 +58,9 @@ unsetopt BEEP
 
 ### END OPTIONS ###
 
-bindkey -e
+# Keybinds
 
-PROMPT=$'%F{blue}%~%f
-%F{green}\U276F %f'
+bindkey -e
 
 # Completion
 
@@ -77,11 +76,11 @@ compinit
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-# Linux
+### Linux ###
 bindkey "^[OA" history-beginning-search-backward-end
 bindkey "^[OB" history-beginning-search-forward-end
 
-# MacOS
+### MacOS ###
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
@@ -90,3 +89,6 @@ eval $(keychain --eval --quiet)
 
 # Fuzzy Search
 source <(fzf --zsh)
+
+# Prompt
+eval "$(starship init zsh)"
