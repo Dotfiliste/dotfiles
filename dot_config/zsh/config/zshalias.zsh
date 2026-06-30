@@ -8,4 +8,5 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 
 alias vim="nvim" # Neovim FTW
+alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias k=kubectl
