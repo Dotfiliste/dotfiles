@@ -3,17 +3,23 @@
 
 brew bundle --file=/dev/stdin <<EOF
 brew "chezmoi"
+brew "fzf"
 brew "keychain"
 brew "mole"
-brew "neofetch"
 brew "neovim"
-brew "nmap"
 brew "tree"
 brew "tealdeer"
-cask "ghostty"
-cask "nikitabobko/tap/aerospace"
-cask "proton-drive"
-cask "proton-pass"
-cask "protonvpn"
 EOF
+
+if [ "$1" == "full" ]
+then
+  brew bundle --file=/dev/stdin <<EOF
+  cask "ghostty"
+  cask "nikitabobko/tap/aerospace"
+  cask "proton-drive"
+  cask "proton-pass"
+  cask "protonvpn"
+EOF
+fi
+
 {{ end -}}
