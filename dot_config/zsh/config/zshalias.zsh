@@ -9,4 +9,6 @@ alias diff='diff --color=auto'
 
 alias vim="nvim" # Neovim FTW
 alias nvchad="NVIM_APPNAME=nvchad nvim"
+alias cd="z"
+alias cdi="zi"
 alias k=kubectl

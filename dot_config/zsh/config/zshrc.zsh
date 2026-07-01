@@ -90,5 +90,8 @@ eval $(keychain --eval --quiet)
 # Fuzzy Search
 source <(fzf --zsh)
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # Prompt
 eval "$(starship init zsh)"
