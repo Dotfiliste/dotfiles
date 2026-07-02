@@ -64,8 +64,6 @@ bindkey -e
 
 # Completion
 
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}' '+l:|=* r:|=*'
@@ -92,6 +90,3 @@ source <(fzf --zsh)
 
 # Zoxide
 eval "$(zoxide init zsh)"
-
-# Prompt
-eval "$(starship init zsh)"

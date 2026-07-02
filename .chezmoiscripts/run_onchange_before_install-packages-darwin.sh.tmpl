@@ -7,17 +7,14 @@ brew "fzf"
 brew "keychain"
 brew "mole"
 brew "neovim"
+brew "pure"
 brew "ripgrep"
-brew "starship"
 brew "tealdeer"
 brew "tree"
 brew "tree-sitter-cli"
 brew "zoxide"
 cask "font-jetbrains-mono-nerd-font"
 EOF
-
-git clone https://github.com/NvChad/starter "$HOME/.config/nvchad"
-[ ! -z "$HOME" ] && rm -rf "$HOME/.config/nvchad/.git"
 
 if [ "$1" == "full" ]
 then
