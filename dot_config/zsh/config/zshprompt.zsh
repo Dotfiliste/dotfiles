@@ -23,10 +23,17 @@ clear() {
     command clear
 }
 
+# Reset K8s context with this command
+k8s-clear() {
+        my_kube_used=0
+        my_kube_context=
+}
+
 # Only show the kube context after a kube-related command has been run.
 my_kube_used=0
 my_preexec() {
-    [[ $3 == (kubectl|kubectx|kubens|helm|k9s)(| *) ]] && my_kube_used=1
+    [[ $3 == k8s-clear(| *) ]] && return
+    [[ $3 == (kubectl|kubectx|kubens|helm|k9s)(| *) || $3 == k8s-* ]] && my_kube_used=1
 }
 autoload -U add-zsh-hook
 add-zsh-hook preexec my_preexec
