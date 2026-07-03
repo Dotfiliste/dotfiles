@@ -25,8 +25,8 @@ clear() {
 
 # Reset K8s context with this command
 k8s-clear() {
-        my_kube_used=0
-        my_kube_context=
+    my_kube_used=0
+    my_kube_context=
 }
 
 # Only show the kube context after a kube-related command has been run.
@@ -43,12 +43,13 @@ my_kube_context=
 my_precmd() {
     (( my_kube_used )) || return
     my_kube_used=0
-	my_kube_context=$(kubectl config current-context 2>/dev/null)
+    my_kube_context=$(kubectl config current-context 2>/dev/null)
+    my_kube_context=${my_kube_context:-N/A}
 }
 add-zsh-hook precmd my_precmd
 
 prompt_pure_precustom() {
-	psvar[23]=${my_kube_context:+⎈ $my_kube_context}
+    psvar[23]=${my_kube_context:+⎈ $my_kube_context}
 }
 
 autoload -U promptinit
