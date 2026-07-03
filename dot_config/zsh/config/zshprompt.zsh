@@ -32,7 +32,7 @@ k8s-clear() {
 # Only show the kube context after a kube-related command has been run.
 my_kube_used=0
 my_preexec() {
-    [[ $3 == (k8s-clear|k8s-deactivate) ]] && return
+    [[ $3 == (k8s-clear|k8s-deactivate)(| *) ]] && return
     [[ $3 == (kubectl|kubectx|kubens|helm|k9s)(| *) || $3 == k8s-* ]] && my_kube_used=1
 }
 autoload -U add-zsh-hook
@@ -43,8 +43,9 @@ my_kube_context=
 my_precmd() {
     (( my_kube_used )) || return
     my_kube_used=0
-    my_kube_context=$(kubectl config get-contexts --no-headers 2>/dev/null \
-                | awk '$1 == "*" { printf "%s%s", $2, ($5 != "" ? ":" $5 : "") }')
+    my_kube_context=$(kubectl config view --minify \
+        --output 'jsonpath={.current-context}:{..namespace}' 2>/dev/null)
+    my_kube_context=${my_kube_context%:}
     my_kube_context=${my_kube_context:-N/A}
 }
 add-zsh-hook precmd my_precmd
