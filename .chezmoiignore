@@ -1,5 +1,5 @@
 # Global local overrides
-**/config.d
+!**/config.d
 **/config.d/**
 
 # SSH
