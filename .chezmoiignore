@@ -1,17 +1,18 @@
 # Global local overrides
-!**/config.d
+!**/config.d/
 **/config.d/**
 
 # SSH
+!**/.ssh/
 !**/.ssh/config
 **/.ssh/**
 
 # ZSH
-**/.zcompcache
+**/.zcompcache/
 **/.zcompcache/**
 **/.zcompdump*
 **/.zsh_history
-**/.zsh_sessions
+**/.zsh_sessions/
 **/.zsh_sessions/**
 
 # Nvim
