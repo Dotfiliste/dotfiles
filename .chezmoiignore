@@ -1,0 +1,18 @@
+# Global local overrides
+**/config.d
+**/config.d/**
+
+# SSH
+!**/.ssh/config
+**/.ssh/**
+
+# ZSH
+**/.zcompcache
+**/.zcompcache/**
+**/.zcompdump*
+**/.zsh_history
+**/.zsh_sessions
+**/.zsh_sessions/**
+
+# Nvim
+**/lazy-lock.json
