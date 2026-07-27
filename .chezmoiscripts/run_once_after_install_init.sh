@@ -6,5 +6,5 @@ git config user.email dotfiliste@chezmoi
 git config --add --local core.sshCommand 'ssh -i ~/.ssh/dotfiles'
 git remote set-url --push origin git@github.com:dotfiliste/dotfiles.git
 
-git clone https://github.com/NvChad/starter "$HOME/.config/nvchad"
-[ ! -z "$HOME" ] && rm -rf "$HOME/.config/nvchad/.git"
+git clone https://github.com/LazyVim/starter "$HOME/.config/lazyvim"
+[ ! -z "$HOME" ] && rm -rf "$HOME/.config/lazyvim/.git"
