@@ -4,3 +4,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export CLICOLOR=1
 export EDITOR=nvim
+export DO_NOT_TRACK=1
