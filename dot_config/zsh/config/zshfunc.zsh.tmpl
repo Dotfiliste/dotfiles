@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+update-betterfox() {
+    # https://github.com/yokoffing/Betterfox
+    {{- if eq .chezmoi.os "darwin" }}
+    local ZEN_PROFILES_PATH="$HOME/Library/Application Support/zen/Profiles"
+    {{- else }}
+    local ZEN_PROFILES_PATH="$XDG_CONFIG_HOME/zen
+    {{- end }}
+    local PROFILE_FOLDER=$(find "$ZEN_PROFILES_PATH" -maxdepth 1 -type d -name '* (release)')
+    [ -z "$PROFILE_FOLDER" ] && exit 1
+
+    curl -s https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js > "$PROFILE_FOLDER/user.js"
+    cat "$XDG_CONFIG_HOME/betterfox/my-user.js" >> "$PROFILE_FOLDER/user.js"
+}
