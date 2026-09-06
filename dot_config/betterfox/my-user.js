@@ -25,7 +25,7 @@ user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false);
 
 // PREF: disable passkeys
-user_pref("security.webauth.webauthn", false);
+user_pref("security.webauth.webauthn", true); // ENFORCED
 
 /** SECURE DNS ***/
 // PREF: set DoH provider
@@ -132,3 +132,4 @@ user_pref("zen.view.compact.toolbar-flash-popup", true);
 user_pref("zen.view.use-single-toolbar", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.automaticallyPopup", false);
+user_pref("ui.key.accelKey", 224);

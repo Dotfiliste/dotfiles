@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#! /bin/bash
+
+ln -sf "$XDG_CONFIG_HOME/xkb/symbols/lafayette_macos_v0.9.keylayout" \
+       "$HOME/Library/Keyboard Layouts/lafayette_macos_v0.9.keylayout"
