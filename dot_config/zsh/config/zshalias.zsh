@@ -8,6 +8,6 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=auto'
 
 alias vim="nvim" # Neovim FTW
-Alias cd="z"
+alias cd="z"
 alias cdi="zi"
 alias k=kubectl
