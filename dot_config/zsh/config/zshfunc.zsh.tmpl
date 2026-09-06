@@ -5,7 +5,7 @@ update-betterfox() {
     {{- if eq .chezmoi.os "darwin" }}
     local ZEN_PROFILES_PATH="$HOME/Library/Application Support/zen/Profiles"
     {{- else }}
-    local ZEN_PROFILES_PATH="$XDG_CONFIG_HOME/zen
+    local ZEN_PROFILES_PATH="$XDG_CONFIG_HOME/zen"
     {{- end }}
     local PROFILE_FOLDER=$(find "$ZEN_PROFILES_PATH" -maxdepth 1 -type d -name '* (release)')
     [ -z "$PROFILE_FOLDER" ] && exit 1
