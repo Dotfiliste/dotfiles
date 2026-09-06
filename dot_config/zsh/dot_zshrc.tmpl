@@ -1,5 +1,8 @@
 #! /usr/bin/env zsh
 
+{{- if ne .chezmoi.os "darwin" }}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{- end }}
 for file in "$ZDOTDIR"/config/*.zsh(N.)
 do
   source "$file"
