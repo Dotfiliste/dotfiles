@@ -1,0 +1,27 @@
+{{- $mod := "alt" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $mod = "super" -}}
+{{- end -}}
+
+auto-update-channel = stable
+theme = light:Violet Light,dark:Violet Dark
+
+{{ if eq .chezmoi.os "linux" -}}
+key-remap = ctrl=alt
+key-remap = alt=ctrl
+keybind = performable:alt+c=copy_to_clipboard
+keybind = alt+v=paste_from_clipboard
+{{- end }}
+
+keybind = {{ $mod }}+,=previous_tab
+keybind = {{ $mod }}+.=next_tab
+keybind = {{ $mod }}+shift+,=move_tab:-1
+keybind = {{ $mod }}+shift+.=move_tab:+1
+keybind = {{ $mod }}+enter=new_split:right
+keybind = {{ $mod }}+shift+enter=new_split:down
+keybind = {{ $mod }}+h=goto_split:left
+keybind = {{ $mod }}+j=goto_split:down
+keybind = {{ $mod }}+k=goto_split:up
+keybind = {{ $mod }}+l=goto_split:right
+keybind = {{ $mod }}+w=close_surface
+keybind = {{ $mod }}+q=quit

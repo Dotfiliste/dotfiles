@@ -132,4 +132,3 @@ user_pref("zen.view.compact.toolbar-flash-popup", true);
 user_pref("zen.view.use-single-toolbar", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.automaticallyPopup", false);
-user_pref("ui.key.accelKey", 224);
