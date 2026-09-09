@@ -76,7 +76,7 @@ user_pref("browser.sessionstore.privacy_level", 2);
 
 // PREF: re-enable search and form history
 // This is trivial if you're sanitizing after every session.
-user_pref("browser.formfill.enable", true);
+user_pref("browser.formfill.enable", false); // ENFORCED
 
 /** SERVICE WORKERS ***/
 // PREF: disable service workers
@@ -121,7 +121,7 @@ user_pref("browser.contentblocking.features.strict", "tp,tpPrivate,cookieBehavio
 
 /** SEARCH SETTINGS ***/
 // PREF: restore search engine suggestions
-user_pref("browser.search.suggest.enabled", true);
+user_pref("browser.search.suggest.enabled", false); // ENFORCED
 
 /****************************************************************************
  * SECTION: UI SETTINGS                                                     *
