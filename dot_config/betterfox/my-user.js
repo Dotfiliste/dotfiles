@@ -121,11 +121,12 @@ user_pref("browser.contentblocking.features.strict", "tp,tpPrivate,cookieBehavio
 
 /** SEARCH SETTINGS ***/
 // PREF: restore search engine suggestions
-user_pref("browser.search.suggest.enabled", false); // ENFORCED
+user_pref("browser.search.suggest.enabled", true);
 
 /****************************************************************************
  * SECTION: UI SETTINGS                                                     *
 ****************************************************************************/
+user_pref("browser.urlbar.showSearchSuggestionsFirst", false);
 user_pref("zen.view.compact.enable-at-startup", true);
 user_pref("zen.view.compact.hide-toolbar", true);
 user_pref("zen.view.compact.toolbar-flash-popup", true);
