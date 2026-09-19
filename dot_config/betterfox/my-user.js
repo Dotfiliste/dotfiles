@@ -131,5 +131,6 @@ user_pref("zen.view.compact.enable-at-startup", true);
 user_pref("zen.view.compact.hide-toolbar", true);
 user_pref("zen.view.compact.toolbar-flash-popup", true);
 user_pref("zen.view.use-single-toolbar", false);
+user_pref("zen.tabs.select-recently-used-on-close", false);
 user_pref("browser.translations.enable", false);
 user_pref("browser.translations.automaticallyPopup", false);
