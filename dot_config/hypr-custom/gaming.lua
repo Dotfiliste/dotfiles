@@ -16,7 +16,7 @@ hl.bind(mainMod .. " + SHIFT + G", function()
 end)
 
 hl.define_submap("gaming", function()
-    hl.bind(mainMod .. " + escape", function()
+    hl.bind("CTRL + ALT + Delete", function()
         hl.dispatch(hl.dsp.submap("reset"))
         hl.config({ input = { kb_options = "ctrl:swap_lalt_lctl,caps:swapescape" } })
     end)
