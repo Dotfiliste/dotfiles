@@ -14,13 +14,18 @@ set wildmode=longest,list   " get bash-like tab completions
 set cc=90                   " set an 90 column border for good coding style
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
-set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 "set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 set noswapfile              " disable creating swap file
 set backupdir=~/.cache/vim  " Directory to store backup files.
+set relativenumber
+set mouse=
 colorscheme vim
 
+lua vim.g.mapleader = " "
 lua require("config.lazy")
+lua require("config.hardmode")
+lua require("config.delete")
+lua require("config.keymaps")
