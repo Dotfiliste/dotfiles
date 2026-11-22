@@ -23,6 +23,7 @@ set backupdir=~/.cache/vim  " Directory to store backup files.
 set relativenumber
 set mouse=
 colorscheme vim
+set scrolloff=10
 
 lua vim.g.mapleader = " "
 lua require("config.lazy")

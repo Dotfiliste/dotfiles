@@ -40,7 +40,7 @@ local function hybrid_lnum(args)
   end
 
   -- Absolu forcé (cmdline/recherche), ou bord d'écran.
-  if absolute_only() or near_screen_edge(args.lnum) then
+  if search.is_navigating or absolute_only() or near_screen_edge(args.lnum) then
     return cell('LineNr', args.lnum)
   end
 

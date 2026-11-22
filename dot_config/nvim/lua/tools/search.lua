@@ -11,6 +11,7 @@ local M = {}
 -- On stocke le pattern (et non un booléen) : toute recherche différente
 -- (`*`, `#`, `:g/`, pattern modifié…) réarme le mécanisme automatiquement.
 M.dismissed = nil
+M.is_navigating = false
 
 -- Toute recherche saisie via `/` ou `?` réarme explicitement le mécanisme,
 -- même si c'est exactement le même pattern qu'avant (le cas limite).
