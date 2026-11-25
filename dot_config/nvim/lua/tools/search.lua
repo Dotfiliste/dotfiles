@@ -1,22 +1,29 @@
--- État « recherche mise de côté » :
---   1er <Esc> sur une recherche active → masquée (colonne hybride),
---     mais pattern @/ et highlight conservés.
---   2e <Esc> → effacement complet (côté keymap).
+-- État partagé : la keymap <Esc> et les scrolls l'écrivent, la statuscolumn le lit.
 --
--- Ce module ne dépend de rien : la keymap l'écrit, la statuscolumn le lit.
+--   dismissed     : pattern mis de côté par le 1er <Esc> (nil = aucun).
+--                   On stocke le pattern (et non un booléen) : toute recherche
+--                   différente (`*`, `#`, `:g/`, pattern modifié…) réarme le mécanisme.
+--   is_navigating : true après un scroll, remis à false par <Esc>.
+--
+-- Ce module ne dépend de rien.
 
 local M = {}
 
--- Pattern mis de côté par <Esc> (nil = aucun).
--- On stocke le pattern (et non un booléen) : toute recherche différente
--- (`*`, `#`, `:g/`, pattern modifié…) réarme le mécanisme automatiquement.
 M.dismissed = nil
 M.is_navigating = false
 
--- Toute recherche saisie via `/` ou `?` réarme explicitement le mécanisme,
--- même si c'est exactement le même pattern qu'avant (le cas limite).
--- Note : une recherche avortée (Esc / C-c dans la cmdline) réarme aussi.
+-- Réévalue la statuscolumn. Différé : un redraw demandé pendant un event
+-- ou une keymap <expr> serait ignoré.
+function M.redraw()
+  vim.schedule(function()
+    vim.api.nvim__redraw({ statuscolumn = true, flush = true })
+  end)
+end
+
+-- Toute recherche saisie via `/` ou `?` réarme le mécanisme, même sur un
+-- pattern identique. Note : une recherche avortée (Esc / C-c) réarme aussi.
 vim.api.nvim_create_autocmd('CmdlineLeave', {
+  group = vim.api.nvim_create_augroup('tools.search', { clear = true }),
   pattern = { '/', '?' },
   callback = function() M.dismissed = nil end,
 })

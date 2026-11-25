@@ -1,12 +1,5 @@
 local search = require('tools.search')
 
--- Réévalue la statuscolumn après l'event (le redraw serait ignoré durant).
-local function redraw_statuscolumn()
-  vim.schedule(function()
-    vim.api.nvim__redraw({ statuscolumn = true, flush = true })
-  end)
-end
-
 -- Recherche active → 1er <Esc> : met de côté (highlight conservé, colonne hybride)
 --                  → 2e <Esc>  : efface (highlight retiré, pattern vidé)
 -- Aucune recherche → <Esc> purement natif.
@@ -18,25 +11,23 @@ vim.keymap.set('n', '<Esc>', function()
   elseif pattern ~= search.dismissed then
     search.dismissed = pattern    -- 1er <Esc> sur cette recherche
   else
-    vim.cmd('nohlsearch')         -- 2e <Esc> : effacement complet
+    vim.cmd.nohlsearch()          -- 2e <Esc> : effacement complet
     vim.fn.setreg('/', '')
     search.dismissed = nil
   end
-  redraw_statuscolumn()
+  search.redraw()
   return '<Esc>' -- la touche garde son comportement natif en plus
 end, { expr = true, desc = "Esc : met la recherche de côté · Esc Esc : l'efface" })
 
-local function center_scroll()
-    -- On utilise pcall pour éviter les erreurs si on est en haut/bas du fichier
-    pcall(vim.cmd.zz)
-end
+-- Scroll + recentrage. En <expr>, le count tapé avant (5<C-d>, 2<C-f>) est conservé.
+--   <C-d>/<C-u> : demi-page, puis zz recentre l'écran sur le curseur.
+--   <C-f>/<C-b> : page entière, puis M amène le curseur au milieu de l'écran
+--                 (zz ferait reculer l'écran d'une demi-page).
+local scrolls = { ['<C-d>'] = 'zz', ['<C-u>'] = 'zz', ['<C-f>'] = 'M', ['<C-b>'] = 'M' }
 
-local function jump_and_center(key)
+for key, center in pairs(scrolls) do
+  vim.keymap.set('n', key, function()
     search.is_navigating = true
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key .. "zz", true, false, true), "n", false)
+    return key .. center
+  end, { expr = true, desc = 'Scroll centré' })
 end
-
-vim.keymap.set('n', '<C-f>', function() jump_and_center('<C-f>') end)
-vim.keymap.set('n', '<C-b>', function() jump_and_center('<C-b>') end)
-vim.keymap.set('n', '<C-d>', function() jump_and_center('<C-d>') end)
-vim.keymap.set('n', '<C-u>', function() jump_and_center('<C-u>') end)

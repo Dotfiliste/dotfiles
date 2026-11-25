@@ -18,5 +18,6 @@ vim.keymap.set('n', 'X', '"_X', { desc = "Détruire caractère avant curseur" })
 vim.keymap.set({ 'n', 'x' }, 'c', '"_c')
 vim.keymap.set({ 'n', 'x' }, 'C', '"_C')
 
--- p en visuel : coller sans que la sélection écrasée pollue le registre
-vim.keymap.set('x', 'p', '"_dP', { desc = "Coller sans yanker la sélection" })
+-- p en visuel : coller sans que la sélection écrasée pollue le registre.
+-- `P` visuel le fait nativement, en respectant le registre ("ap) et le count.
+vim.keymap.set('x', 'p', 'P', { desc = "Coller sans yanker la sélection" })
