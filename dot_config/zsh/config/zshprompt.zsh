@@ -45,6 +45,7 @@ my_precmd() {
     my_kube_used=0
     my_kube_context=$(kubectl config view --minify \
         --output 'jsonpath={.current-context}:{..namespace}' 2>/dev/null)
+    my_kube_context=${my_kube_context%:default}
     my_kube_context=${my_kube_context%:}
     my_kube_context=${my_kube_context:-N/A}
 }
